@@ -4,17 +4,36 @@
 # 필수 지정은 아니지만 이름 사용을 권장한다.
 # 하나의 workflows에는 여러 개의 워크플로우 사용이 가능하다.
 
-# on : 워크플로우가 언제 실행되는지 설정. push 이벤트를 가장 선호함
-
 # 워크플로우는 수동으로 실행할 수 있지만
 # 일반적으로 코드저장소에 어떤 이벤트가 발생할 때마다
 # 워크플로우를 자동으로 트리거하는 경우가 대부분이다.
-
-# name: Our First Workflow
-# on: push
-
-# 위와 같이 설정해두면 누군가가 코드저장소에 변경사항을 push하거나
+# 아래와 같이 설정해두면 누군가가 코드저장소에 변경사항을 push하거나
 # full request가 merge되면, 이 워크플로우가 자동으로 실행되게 된다.
-
 name: Our First Workflow
 on: push
+# on[키] : 워크플로우가 언제 실행되는지 설정
+# push[이벤트]를 가장 선호함
+
+# 실행할 job을 설정해줘야 에러가 발생하지 않는다.
+# jobs[키]
+jobs: # jobs[키]
+# 작업식별자를 설정해야 한다.
+# 콘솔에 echo 출력을 해보자.
+   echo:
+     # 작업 세부내역을 작성하자.
+     # 반드시 필요한 키 : runs-on, uses
+     # runs-on을 통해서 해당 작업이 어느 환경에서 실행되는지 명시할 수 있다.
+     # github에서는 Win, Mac OS환경도 제공함.
+     runs-on: ubuntu-latest
+
+     # steps키는 값으로 시퀀스를 받음.
+     # yaml에서는 "-" hyphen을 시퀀스기호라고 명명한다.
+     steps:
+       # 최소 1단계는 명시해야 한다.
+       # run키를 이용해서, echo 출력을 해보자.
+       - run: echo 'Hello, Github Actions!'
+
+
+
+
+     
