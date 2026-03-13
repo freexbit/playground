@@ -19,7 +19,7 @@ on: push
 jobs: # jobs[키]
 # 작업식별자를 설정해야 한다.
 # 콘솔에 echo 출력을 해보자.
-   echo:
+   echo: # job식별자
      # 작업 세부내역을 작성하자.
      # 반드시 필요한 키 : runs-on, uses
      # runs-on을 통해서 해당 작업이 어느 환경에서 실행되는지 명시할 수 있다.
@@ -32,6 +32,14 @@ jobs: # jobs[키]
        # 최소 1단계는 명시해야 한다.
        # run키를 이용해서, echo 출력을 해보자.
        - run: echo 'Hello, Github Actions!'
+   pwd-ls: # job식별자
+      name: PWD & LS
+      runs-on: ubuntu-latest
+      steps:
+        - name: Print working directory
+          run: pwd
+        - name: List files
+          run: ls -al
 
 
 
