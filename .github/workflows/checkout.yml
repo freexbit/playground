@@ -26,11 +26,14 @@ jobs:
      # - run: ls -al
      # - run: cat .github/workflows/checkout.yml
 
-    # path로 저장위치를 지정할수도 있음
+    # path: 저장위치를 지정
+    # fetch-depth : 과거 변경이력 불러오기
     - run: ls -al
     - uses: actions/checkout@v6
       with:
         path: our-source
+        fetch-depth: 3
+    - run: git log --pretty=oneline
     - run: ls -al our-source
     - run: cat our-source/.github/workflows/checkout.yml
 
