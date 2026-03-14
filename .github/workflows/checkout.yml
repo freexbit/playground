@@ -10,10 +10,10 @@ jobs:
   checkout:
    runs-on: ubuntu-latest
    steps:
-     - run: ls -al
+     #- run: ls -al
      # 소유자명/저장소명@버전
      # 버전은 v3.5.3 이더라도 major버전만 입력하면 자동으로 해당 최신버전 적용
-     - uses: actions/checkout@v6
+     # - uses: actions/checkout@v6
      # checkout 작업 간단설명(v3 기준임)
      # git init 작업디렉토리를 워크플로우로 만듬
      # git config git을 설정함
@@ -21,6 +21,20 @@ jobs:
      # git fetch 원격저장소에서 코드 내용받아옴
      # git check 이 저장소인 main으로 전환함
      # git log: git log를 통해서 해당 branch에 마지막 커밋의 해시값을 출력
-     
-     - run: ls -al
-     - run: cat .github/workflows/checkout.yml
+
+     # checkout 작업후 변경내용 확인(파일, 파일내용)
+     # - run: ls -al
+     # - run: cat .github/workflows/checkout.yml
+
+    # path로 저장위치를 지정할수도 있음
+    - run: ls -al
+    - uses: actions/checkout@v6
+      with:
+        path: our-source
+    - run: ls -al our-source
+    - run: cat our-source/.github/workflows/checkout.yml
+
+
+
+
+
