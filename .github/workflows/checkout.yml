@@ -31,13 +31,5 @@ jobs:
     - run: ls -al
     - uses: actions/checkout@v6
       with:
-        path: our-source
         fetch-depth: 3
     - run: git log --pretty=oneline
-    - run: ls -al our-source
-    - run: cat our-source/.github/workflows/checkout.yml
-
-
-
-
-
